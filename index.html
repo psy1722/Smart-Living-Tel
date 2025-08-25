@@ -1,45 +1,92 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>스마트리빙텔 - 깨끗하고 편안한 고시텔</title>
-    <style>
-        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: #2c3e50; color: white; padding: 30px 0; text-align: center; }
-        h1 { font-size: 2.5em; margin: 0; }
-        .payment-section { background: #f8f9fa; padding: 30px; border-radius: 10px; margin: 30px 0; }
-        .account-box { background: white; padding: 20px; border-radius: 8px; text-align: center; }
-        .account-number { font-size: 1.5em; color: #0068c3; font-weight: bold; cursor: pointer; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스마트리빙텔</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+    }
+    nav {
+      width: 220px;
+      background: #333;
+      color: #fff;
+      height: 100vh;
+      padding: 20px;
+    }
+    nav h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 10px 0;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+    #map {
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <!-- 카카오맵 SDK -->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=672b9ba287ed6d66c525355ddb7f8940"></script>
 </head>
 <body>
-    <header>
-        <h1>스마트리빙텔</h1>
-        <p>깨끗하고 편안한 주거공간</p>
-    </header>
+  <!-- 왼쪽 메뉴 -->
+  <nav>
+    <h2>스마트리빙텔</h2>
+    <ul>
+      <li><a href="#">🏠 고시텔 소개</a></li>
+      <li><a href="#">📌 방 정보</a></li>
+      <li><a href="#">💰 월세/계약</a></li>
+      <li><a href="#">📍 오시는 길</a></li>
+    </ul>
+  </nav>
 
-    <div class="container">
-        <div class="payment-section">
-            <h2>💰 월세 납부 안내</h2>
-            <div class="account-box">
-                <p><strong>🏦 국민은행</strong></p>
-                <div class="account-number" onclick="copyAccount()">611-05-0001-236</div>
-                <p><strong>예금주:</strong> 국민</p>
-                <p>계좌번호 클릭하면 복사됩니다</p>
-            </div>
-        </div>
-        
-        <h2>📞 연락처</h2>
-        <p>전화: 010-1234-5678</p>
-        <p>깨끗하고 안전한 고시텔입니다.</p>
-    </div>
+  <!-- 메인 콘텐츠 -->
+  <main>
+    <h1>📍 스마트리빙텔 위치 안내</h1>
+    <p><strong>주소:</strong> 경상북도 영주시 번영로 102번길 25-9</p>
 
-    <script>
-        function copyAccount() {
-            navigator.clipboard.writeText('61105000123601');
-            alert('계좌번호가 복사되었습니다!');
-        }
-    </script>
+    <h2>📞 연락처</h2>
+    <p>첫 번째: 010-9574-2367</p>
+    <p>두 번째: 010-3522-5646</p>
+
+    <h2>💰 계좌번호</h2>
+    <p>국민은행 611050001236 (예금주: 우삼용)</p>
+
+    <!-- 지도 -->
+    <div id="map"></div>
+  </main>
+
+  <script>
+    var container = document.getElementById('map');
+    var options = {
+      center: new kakao.maps.LatLng(36.825202, 128.624481), // 영주 번영로 근처 좌표
+      level: 3
+    };
+    var map = new kakao.maps.Map(container, options);
+
+    // 마커 표시
+    var marker = new kakao.maps.Marker({
+      position: new kakao.maps.LatLng(36.825202, 128.624481)
+    });
+    marker.setMap(map);
+  </script>
 </body>
 </html>
