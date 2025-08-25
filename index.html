@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스마트리빙텔 - 깨끗하고 편안한 고시텔</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c3e50; color: white; padding: 30px 0; text-align: center; }
+        h1 { font-size: 2.5em; margin: 0; }
+        .payment-section { background: #f8f9fa; padding: 30px; border-radius: 10px; margin: 30px 0; }
+        .account-box { background: white; padding: 20px; border-radius: 8px; text-align: center; }
+        .account-number { font-size: 1.5em; color: #0068c3; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>스마트리빙텔</h1>
+        <p>깨끗하고 편안한 주거공간</p>
+    </header>
+
+    <div class="container">
+        <div class="payment-section">
+            <h2>💰 월세 납부 안내</h2>
+            <div class="account-box">
+                <p><strong>🏦 국민은행</strong></p>
+                <div class="account-number" onclick="copyAccount()">611-05-0001-236</div>
+                <p><strong>예금주:</strong> 국민</p>
+                <p>계좌번호 클릭하면 복사됩니다</p>
+            </div>
+        </div>
+        
+        <h2>📞 연락처</h2>
+        <p>전화: 010-1234-5678</p>
+        <p>깨끗하고 안전한 고시텔입니다.</p>
+    </div>
+
+    <script>
+        function copyAccount() {
+            navigator.clipboard.writeText('61105000123601');
+            alert('계좌번호가 복사되었습니다!');
+        }
+    </script>
+</body>
+</html>
